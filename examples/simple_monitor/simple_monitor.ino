@@ -1,8 +1,15 @@
 #include <pm2008_i2c.h>
 
+// #define PM2008N
+
 PM2008_I2C pm2008_i2c;
 
 void setup() {
+#ifdef PM2008N
+  // wait for PM2008N to be changed to I2C mode
+  delay(10000);
+#endif
+
   pm2008_i2c.begin();
   Serial.begin(9600);
   pm2008_i2c.command();
